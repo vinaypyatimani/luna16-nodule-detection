@@ -3,23 +3,23 @@
 A 3D Convolutional Neural Network for automated lung nodule detection from CT scans, built with PyTorch. This project implements the core computational pipeline used in Computer-Aided Detection (CAD) systems for lung cancer screening.
 
 The pipeline works in two modes:
-- **Demo mode** (no download needed) — generates synthetic CT volumes with realistic lung anatomy and embedded nodules. Run immediately to see the full pipeline working.
-- **LUNA16 mode** — processes real CT scans from the LUNA16 challenge dataset (~40 GB).
+- **Demo mode** (no download needed): generates synthetic CT volumes with realistic lung anatomy and embedded nodules. Run immediately to see the full pipeline working.
+- **LUNA16 mode**: processes real CT scans from the LUNA16 challenge dataset (~40 GB).
 
 ---
 
 ## What This Project Demonstrates
 
-Lung cancer is the leading cause of cancer mortality worldwide. Early detection of pulmonary nodules — small, roughly spherical abnormalities in lung tissue — via CT screening significantly improves survival rates. The challenge is scale: a single CT scan produces hundreds of 2D slices, and radiologists reviewing thousands of scans per year face a high false-negative rate from fatigue.
+Lung cancer is the leading cause of cancer mortality worldwide. Early detection of pulmonary nodules: small, roughly spherical abnormalities in lung tissue, via CT screening significantly improves survival rates. The challenge is scale: a single CT scan produces hundreds of 2D slices, and radiologists reviewing thousands of scans per year face a high false-negative rate from fatigue.
 
 This project builds an automated detection system that:
 
 1. **Loads and preprocesses** 3D CT volumes (Hounsfield Unit windowing, normalisation)
 2. **Extracts 3D candidate patches** centred on anatomically suspicious locations
 3. **Classifies each patch** as nodule or non-nodule using a 3D ResNet-style CNN
-4. **Evaluates performance** using FROC — the clinical standard metric for nodule detection
+4. **Evaluates performance** using FROC: the clinical standard metric for nodule detection
 
-This is directly relevant to any domain requiring automated anomaly detection in 3D volumetric imaging data — including industrial CT inspection of battery cells, materials characterisation, and non-destructive testing.
+This is directly relevant to any domain requiring automated anomaly detection in 3D volumetric imaging data, including industrial CT inspection of battery cells, materials characterisation, and non-destructive testing.
 
 ---
 
@@ -83,11 +83,11 @@ voxel_idx = round((world_coord_mm − origin_mm) / spacing_mm_per_voxel)
 
 ### Why 3D Convolutions?
 
-A lung nodule is a 3D sphere. Processing individual 2D slices loses the cross-slice context — the nodule's spherical shape is only visible across multiple consecutive slices. 3D convolutions process the full volumetric patch, learning spherical shape features directly. This is the standard approach in modern nodule CAD systems.
+A lung nodule is a 3D sphere. Processing individual 2D slices loses the cross-slice context, the nodule's spherical shape is only visible across multiple consecutive slices. 3D convolutions process the full volumetric patch, learning spherical shape features directly. This is the standard approach in modern nodule CAD systems.
 
 ### The FROC Metric
 
-Standard ROC measures classifier performance per candidate. In clinical practice, radiologists review entire scans — so performance is measured per **scan**, not per candidate. The **Free-Response ROC (FROC)** curve plots:
+Standard ROC measures classifier performance per candidate. In clinical practice, radiologists review entire scans, so performance is measured per **scan**, not per candidate. The **Free-Response ROC (FROC)** curve plots:
 - Y-axis: sensitivity (fraction of true nodules detected)
 - X-axis: average false positives per scan
 
@@ -116,7 +116,7 @@ source venv/bin/activate        # Windows: venv\Scripts\activate
 # Install core dependencies
 pip install numpy scipy pandas matplotlib scikit-learn
 
-# Install PyTorch (CPU version — no GPU needed)
+# Install PyTorch (CPU version - no GPU needed)
 pip install torch --index-url https://download.pytorch.org/whl/cpu
 ```
 
@@ -248,7 +248,7 @@ To use multiple subsets: download and extract `subset0` through `subset9`. The s
 
 This pipeline mirrors the false positive reduction track of the LUNA16 challenge, where participants classify pre-generated candidate locations as nodule or non-nodule. State-of-the-art systems (e.g. V-Net, 3D U-Net variants) reach AUC > 0.99 using deeper models and larger training sets. This project implements the foundational pipeline that such systems build on.
 
-The same approach — 3D patch extraction, volumetric CNN, FROC evaluation — applies directly to CT-based defect detection in other domains: battery cell inspection, additive manufacturing quality control, and materials characterisation.
+The same approach, 3D patch extraction, volumetric CNN, FROC evaluation, applies directly to CT-based defect detection in other domains: battery cell inspection, additive manufacturing quality control, and materials characterisation.
 
 ---
 
@@ -261,4 +261,4 @@ Setio, A.A.A. et al. (2017). *Validation, comparison, and combination of algorit
 ## Author
 
 Vinay Pyatimani — portfolio project demonstrating 3D medical image analysis and deep learning for anomaly detection.
-GitHub: https://github.com/YOUR_USERNAME/luna16-nodule-detection
+GitHub: https://github.com/vinaypyatimani/luna16-nodule-detection
