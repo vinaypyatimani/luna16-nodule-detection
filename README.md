@@ -1,4 +1,4 @@
-# Lung Nodule Detection in CT Scans — 3D CNN on LUNA16
+# Lung Nodule Detection in CT Scans: 3D CNN on LUNA16
 
 A 3D Convolutional Neural Network for automated lung nodule detection from CT scans, built with PyTorch. This project implements the core computational pipeline used in Computer-Aided Detection (CAD) systems for lung cancer screening.
 
